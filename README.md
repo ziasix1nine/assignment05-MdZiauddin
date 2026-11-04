@@ -102,3 +102,13 @@ Middleware runs in the order it is registered. For example, the request logger a
 ### 3. What was the most challenging part?
 
 Implementing query and POST validation was the most challenging part. I learned how to validate user input and return appropriate HTTP status codes and error messages.
+
+## Running Tests
+
+Run the following command to execute the project's automated tests:
+
+```bash
+npm test
+```
+
+This project uses Node.js's built-in test runner.
