@@ -8,21 +8,27 @@
 
    ```bash
    npm install
+   ```
 
 4. Start the development server:
-npm run dev
+
+   ```bash
+   npm run dev
+   ```
 
 5. Open http://localhost:3000.
 
-My Collection
+## My Collection
+
 This project manages a sneaker collection with five initial records.
 
 Each sneaker contains:
-- id: Server-generated ID
-- name: Sneaker name
-- sizeUS: US shoe size
-- type: running, basketball, or casual
-- email: Contact email
+
+- `id`: Server-generated ID
+- `name`: Sneaker name
+- `sizeUS`: US shoe size
+- `type`: running, basketball, or casual
+- `email`: Contact email
 
 ## Predictions
 
@@ -53,7 +59,6 @@ The `/stats` route is defined before the `/:id` route. This prevents Express fro
 
 The 404 handler is placed after the router so that valid routes can be matched first.
 
-
 ## Test Log
 
 | Test | Expected Result | Actual Result |
@@ -62,8 +67,8 @@ The 404 handler is placed after the router so that valid routes can be matched f
 | GET `/sneakers` | 200 OK, five sneakers | Passed |
 | GET `/sneakers/stats` | 200 OK, collection statistics | Passed |
 | GET `/sneakers/2` | 200 OK, sneaker details | Passed |
-| GET `/sneakers/999` | 404 Not Found | Verify |
-| GET `/nothing-here` | 404 Not Found | Verify |
+| GET `/sneakers/999` | 404 Not Found | Passed |
+| GET `/nothing-here` | 404 Not Found | Passed |
 | GET `/sneakers?min=10` | 200 OK, three results | Passed |
 | GET `/sneakers?limit=2` | 200 OK, count 5 and two results | Passed |
 | POST valid sneaker | 201 Created | Passed |
@@ -78,19 +83,22 @@ The 404 handler is placed after the router so that valid routes can be matched f
 
 | Bug | Problem | Fix |
 |---|---|---|
-| 1 | Logger did not call next() | Added next() |
+| 1 | Logger did not call `next()` | Added `next()` |
 | 2 | 404 handler was before routes | Moved 404 handler after routes |
-| 3 | /notes/:id came before /notes/count | Moved /notes/count above /notes/:id |
+| 3 | `/notes/:id` came before `/notes/count` | Moved `/notes/count` above `/notes/:id` |
 
-Tested /notes/count and /notes/1 using curl.exe. Both routes returned successful responses after the fixes.
+Tested `/notes/count` and `/notes/1` using `curl.exe`. Both routes returned successful responses after the fixes.
 
 ## Reflection
 
 ### 1. What did I learn about Express routing?
+
 I learned how to create routes using Express Router and how route order affects which endpoint handles a request.
 
 ### 2. Why is middleware order important?
+
 Middleware runs in the order it is registered. For example, the request logger and URL-encoded body parser must run before the routes that depend on them.
 
 ### 3. What was the most challenging part?
+
 Implementing query and POST validation was the most challenging part. I learned how to validate user input and return appropriate HTTP status codes and error messages.
