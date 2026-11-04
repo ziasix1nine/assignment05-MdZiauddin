@@ -15,9 +15,10 @@ app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
   next();
 });
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
+
+// how many notes?
+app.get('/notes/count', (req, res) => {
+  res.json({ count: notes.length });
 });
 
 // one note by id
@@ -27,9 +28,11 @@ app.get('/notes/:id', (req, res) => {
   res.json(note);
 });
 
-// how many notes?
-app.get('/notes/count', (req, res) => {
-  res.json({ count: notes.length });
+
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
 });
 
 app.listen(3001, () => {
