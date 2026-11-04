@@ -74,7 +74,15 @@ The 404 handler is placed after the router so that valid routes can be matched f
 | POST unexpected field | 400 Bad Request | Passed |
 | POST uppercase category | 201 Created, stored lowercase | Passed |
 
+## Debugging Log
 
+| Bug | Problem | Fix |
+|---|---|---|
+| 1 | Logger did not call next() | Added next() |
+| 2 | 404 handler was before routes | Moved 404 handler after routes |
+| 3 | /notes/:id came before /notes/count | Moved /notes/count above /notes/:id |
+
+Tested /notes/count and /notes/1 using curl.exe. Both routes returned successful responses after the fixes.
 
 ## Reflection
 
