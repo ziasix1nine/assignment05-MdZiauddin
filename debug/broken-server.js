@@ -13,8 +13,8 @@ const notes = [
 // log every request
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
+  next();
 });
-
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
