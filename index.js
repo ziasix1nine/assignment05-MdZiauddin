@@ -25,6 +25,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to Sneaker API! Available endpoints: /sneakers and /sneakers/stats');
 });
 
+
+app.use(express.urlencoded({ extended: true }));
 // Mount sneaker router
 app.use('/sneakers', sneakerRouter);
 
